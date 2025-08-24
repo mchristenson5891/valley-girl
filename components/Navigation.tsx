@@ -1,0 +1,182 @@
+"use client";
+
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { Menu, X, Scissors, ShoppingBag, Instagram } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
+
+export default function Navigation() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+      
+      // Update active section based on scroll position
+      const sections = ['home', 'stylists', 'services', 'brands'];
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/stylists", label: "Our Stylists" },
+    { href: "/services", label: "Services" },
+    { href: "/shop", label: "Shop" },
+    { href: "/contact", label: "Contact" }
+  ];
+
+  return (
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      scrolled 
+        ? 'bg-white shadow-lg backdrop-blur-md' 
+        : 'bg-white/80 backdrop-blur-sm'
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`flex justify-between items-center transition-all duration-300 ${
+          scrolled ? 'h-16' : 'h-20'
+        }`}>
+          <Link href="/" className="flex items-center space-x-2 group">
+            <motion.div
+              whileHover={{ rotate: 45, scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <Scissors className={`text-salon-rose-500 transition-all duration-300 ${
+                scrolled ? 'h-7 w-7' : 'h-8 w-8'
+              }`} />
+            </motion.div>
+            <span className={`font-bold text-salon-rose-600 transition-all duration-300 ${
+              scrolled ? 'text-xl' : 'text-2xl'
+            }`}>
+              Valley Girl
+            </span>
+          </Link>
+
+          <div className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              
+              return (
+                <motion.div
+                  key={link.href}
+                  whileHover={{ y: -2 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <Link
+                    href={link.href}
+                    className={`relative font-medium transition-all duration-300 ${
+                      isActive 
+                        ? 'text-salon-rose-500' 
+                        : 'text-salon-neutral-700 hover:text-salon-teal-500'
+                    }`}
+                  >
+                    {link.label}
+                    {isActive && (
+                      <motion.div
+                        layoutId="navbar-indicator"
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-salon-rose-500"
+                        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                      />
+                    )}
+                  </Link>
+                </motion.div>
+              );
+            })}
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <Link
+                href="https://instagram.com/valleygirlsalon"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-salon-neutral-700 hover:text-salon-rose-500 transition-colors"
+              >
+                <Instagram className="h-5 w-5" />
+              </Link>
+            </motion.div>
+            <Link
+              href="/book"
+              className="relative inline-block"
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="relative bg-salon-rose-500 text-white px-6 py-2.5 rounded-full font-medium overflow-hidden shadow-lg hover:shadow-xl hover:bg-salon-rose-600 transition-all"
+              >
+                <span className="relative z-10">Book Now</span>
+              </motion.div>
+            </Link>
+          </div>
+
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-white border-t"
+          >
+            <div className="px-4 py-6 space-y-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block text-lg text-salon-neutral-700 hover:text-salon-rose-500 transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <div className="flex items-center space-x-4 pt-4 border-t">
+                <Link
+                  href="https://instagram.com/valleygirlsalon"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-salon-neutral-700 hover:text-salon-rose-500 transition-colors"
+                >
+                  <Instagram className="h-6 w-6" />
+                </Link>
+                <Link
+                  href="/book"
+                  onClick={() => setIsOpen(false)}
+                  className="flex-1 text-center bg-salon-rose-500 text-white px-6 py-3 rounded-full hover:shadow-lg hover:bg-salon-rose-600 transition-all duration-200 font-medium"
+                >
+                  Book Appointment
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
+}
