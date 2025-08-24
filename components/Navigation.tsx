@@ -10,6 +10,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const isHomePage = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,29 +31,35 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled 
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+      scrolled || !isHomePage
         ? 'bg-white shadow-lg backdrop-blur-md' 
-        : 'bg-white/80 backdrop-blur-sm'
+        : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex justify-between items-center transition-all duration-300 ${
-          scrolled ? 'h-16' : 'h-20'
+        <div className={`flex justify-between items-center transition-all duration-500 ${
+          scrolled || !isHomePage ? 'h-16' : 'h-20'
         }`}>
           <Link href="/" className="flex items-center space-x-2 group">
             <div className="transition-transform duration-300 group-hover:rotate-12">
-              <Scissors className={`text-salon-rose-500 transition-all duration-300 ${
-                scrolled ? 'h-7 w-7' : 'h-8 w-8'
+              <Scissors className={`transition-all duration-300 ${
+                scrolled || !isHomePage
+                  ? 'h-7 w-7 text-salon-rose-500' 
+                  : 'h-8 w-8 text-white drop-shadow-lg'
               }`} />
             </div>
-            <span className={`font-bold text-salon-rose-600 transition-all duration-300 ${
-              scrolled ? 'text-xl' : 'text-2xl'
+            <span className={`font-bold transition-all duration-300 ${
+              scrolled || !isHomePage
+                ? 'text-xl text-salon-rose-600' 
+                : 'text-2xl text-white drop-shadow-lg'
             }`}>
               Valley Girl
             </span>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-8">
+          <div className={`hidden md:flex items-center space-x-8 transition-all duration-500 ${
+            scrolled || !isHomePage ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'
+          }`}>
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               
@@ -80,13 +87,19 @@ export default function Navigation() {
               href="https://instagram.com/valleygirlsalon"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-salon-neutral-700 hover:text-salon-rose-500 transition-all duration-300 hover:scale-110"
+              className={`transition-all duration-300 hover:scale-110 ${
+                scrolled || !isHomePage ? 'text-salon-neutral-700 hover:text-salon-rose-500' : 'text-white'
+              }`}
             >
               <Instagram className="h-5 w-5" />
             </Link>
             <Link
               href="/book"
-              className="relative bg-salon-rose-500 text-white px-6 py-2.5 rounded-full font-medium shadow-lg hover:shadow-xl hover:bg-salon-rose-600 transition-all duration-300 hover:scale-105 active:scale-95"
+              className={`relative px-6 py-2.5 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 ${
+                scrolled || !isHomePage
+                  ? 'bg-salon-rose-500 text-white hover:bg-salon-rose-600' 
+                  : 'bg-white text-salon-rose-500 hover:bg-salon-rose-50'
+              }`}
             >
               Book Now
             </Link>
@@ -94,7 +107,11 @@ export default function Navigation() {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className={`md:hidden p-2 rounded-lg transition-all duration-300 ${
+              scrolled || !isHomePage
+                ? 'hover:bg-gray-100 text-salon-neutral-700' 
+                : 'hover:bg-white/20 text-white'
+            }`}
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
