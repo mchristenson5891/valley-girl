@@ -39,14 +39,11 @@ export default function Navigation() {
           scrolled ? 'h-16' : 'h-20'
         }`}>
           <Link href="/" className="flex items-center space-x-2 group">
-            <motion.div
-              whileHover={{ rotate: 45, scale: 1.1 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
+            <div className="transition-transform duration-300 group-hover:rotate-12">
               <Scissors className={`text-salon-rose-500 transition-all duration-300 ${
                 scrolled ? 'h-7 w-7' : 'h-8 w-8'
               }`} />
-            </motion.div>
+            </div>
             <span className={`font-bold text-salon-rose-600 transition-all duration-300 ${
               scrolled ? 'text-xl' : 'text-2xl'
             }`}>
@@ -59,57 +56,38 @@ export default function Navigation() {
               const isActive = pathname === link.href;
               
               return (
-                <motion.div
+                <Link
                   key={link.href}
-                  whileHover={{ y: -2 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  href={link.href}
+                  className={`relative font-medium transition-all duration-300 group ${
+                    isActive 
+                      ? 'text-salon-rose-500' 
+                      : 'text-salon-neutral-700 hover:text-salon-rose-500'
+                  }`}
                 >
-                  <Link
-                    href={link.href}
-                    className={`relative font-medium transition-all duration-300 ${
-                      isActive 
-                        ? 'text-salon-rose-500' 
-                        : 'text-salon-neutral-700 hover:text-salon-teal-500'
-                    }`}
-                  >
-                    {link.label}
-                    {isActive && (
-                      <motion.div
-                        layoutId="navbar-indicator"
-                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-salon-rose-500"
-                        transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                      />
-                    )}
-                  </Link>
-                </motion.div>
+                  {link.label}
+                  {/* Animated underline for all links */}
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-salon-rose-500 transition-all duration-300 ${
+                    isActive 
+                      ? 'w-full' 
+                      : 'w-0 group-hover:w-full'
+                  }`} />
+                </Link>
               );
             })}
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            <Link
+              href="https://instagram.com/valleygirlsalon"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-salon-neutral-700 hover:text-salon-rose-500 transition-all duration-300 hover:scale-110"
             >
-              <Link
-                href="https://instagram.com/valleygirlsalon"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-salon-neutral-700 hover:text-salon-rose-500 transition-colors"
-              >
-                <Instagram className="h-5 w-5" />
-              </Link>
-            </motion.div>
+              <Instagram className="h-5 w-5" />
+            </Link>
             <Link
               href="/book"
-              className="relative inline-block"
+              className="relative bg-salon-rose-500 text-white px-6 py-2.5 rounded-full font-medium shadow-lg hover:shadow-xl hover:bg-salon-rose-600 transition-all duration-300 hover:scale-105 active:scale-95"
             >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="relative bg-salon-rose-500 text-white px-6 py-2.5 rounded-full font-medium overflow-hidden shadow-lg hover:shadow-xl hover:bg-salon-rose-600 transition-all"
-              >
-                <span className="relative z-10">Book Now</span>
-              </motion.div>
+              Book Now
             </Link>
           </div>
 
