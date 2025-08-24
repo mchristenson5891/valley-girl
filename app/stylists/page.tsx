@@ -8,21 +8,48 @@ import { stylists } from "@/lib/data";
 
 export default function StylistsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-salon-cream to-white py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-salon-cream to-white">
+      {/* Hero Section with Team Photo */}
+      <div className="relative h-[60vh] min-h-[500px] overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('https://9ae5edccc14b5e9d0342.cdn6.editmysite.com/uploads/b/9ae5edccc14b5e9d034238da5184f3edaee7f4d9e3dbb7ce99ae9baf17b724de/IMG_3926_1755890723.jpg?width=2400&optimize=medium')`
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
+        
+        <div className="relative h-full flex items-center justify-center text-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="max-w-4xl mx-auto"
+          >
+            <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white drop-shadow-2xl">
+              Meet Our Team
+            </h1>
+            <p className="text-xl md:text-2xl text-white/95 drop-shadow-lg max-w-2xl mx-auto">
+              Talented professionals dedicated to making you look and feel your best
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Intro Section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-salon-rose-500 to-salon-rose-400 bg-clip-text text-transparent">
-              Our Stylists
-            </span>
-          </h1>
-          <p className="text-xl text-salon-neutral-600 max-w-2xl mx-auto">
-            Meet our team of talented professionals dedicated to making you look and feel your best
+          <h2 className="text-3xl font-bold text-salon-charcoal mb-4">
+            Get to Know Our Stylists
+          </h2>
+          <p className="text-lg text-salon-neutral-600 max-w-3xl mx-auto">
+            Each member of our team brings unique expertise and passion to Valley Girl Salon. 
+            Click on any stylist to learn more about their specialties and book an appointment.
           </p>
         </motion.div>
 
