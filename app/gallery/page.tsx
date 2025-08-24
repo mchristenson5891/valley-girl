@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Camera, Sparkles, X } from "lucide-react";
 
 // Gallery categories
@@ -184,85 +184,135 @@ export default function GalleryPage() {
           ))}
         </div>
 
-        {/* Before/After Modal */}
-        {selectedImage && (
-          <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+        {/* Enhanced Before/After Modal */}
+        <AnimatePresence>
+          {selectedImage && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+              onClick={() => {
+                setSelectedImage(null);
+                setShowBefore(false);
+              }}
             >
-              <div className="relative">
-                {/* Close Button */}
-                <button
-                  onClick={() => {
-                    setSelectedImage(null);
-                    setShowBefore(false);
-                  }}
-                  className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors"
-                >
-                  <X className="h-5 w-5" />
-                </button>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8, y: 20 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                className="bg-white rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-hidden shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Header */}
+                <div className="flex items-center justify-between p-6 border-b border-salon-neutral-100">
+                  <div>
+                    <h3 className="text-2xl font-bold text-salon-charcoal">
+                      {selectedImage.title}
+                    </h3>
+                    <p className="text-sm text-salon-neutral-500 mt-1">
+                      by {selectedImage.stylist}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setSelectedImage(null);
+                      setShowBefore(false);
+                    }}
+                    className="w-10 h-10 bg-salon-neutral-100 rounded-full flex items-center justify-center hover:bg-salon-neutral-200 transition-colors"
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
+                </div>
 
-                {/* Image Display */}
-                <div className="relative aspect-[4/5] bg-salon-neutral-100">
-                  <Image
-                    src={showBefore ? selectedImage.before : selectedImage.after}
-                    alt={selectedImage.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                  
-                  {/* Before/After Toggle */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
+                {/* Image Comparison Section */}
+                <div className="relative bg-salon-neutral-50">
+                  <div className="grid md:grid-cols-2 gap-0">
+                    {/* Before Image */}
+                    <div className="relative">
+                      <div className="absolute top-4 left-4 z-10">
+                        <span className="px-3 py-1 bg-black/70 text-white rounded-full text-sm font-medium backdrop-blur-sm">
+                          Before
+                        </span>
+                      </div>
+                      <div className="relative aspect-[3/4] bg-salon-neutral-100">
+                        <Image
+                          src={selectedImage.before}
+                          alt="Before"
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 1024px) 50vw, 25vw"
+                        />
+                      </div>
+                    </div>
+
+                    {/* After Image */}
+                    <div className="relative">
+                      <div className="absolute top-4 left-4 z-10">
+                        <span className="px-3 py-1 bg-salon-rose-500 text-white rounded-full text-sm font-medium">
+                          After
+                        </span>
+                      </div>
+                      <div className="relative aspect-[3/4] bg-salon-neutral-100">
+                        <Image
+                          src={selectedImage.after}
+                          alt="After"
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 1024px) 50vw, 25vw"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Mobile Toggle for small screens */}
+                  <div className="md:hidden absolute bottom-4 left-1/2 -translate-x-1/2">
                     <div className="bg-white/90 backdrop-blur-sm rounded-full p-1 flex shadow-lg">
                       <button
-                        onClick={() => setShowBefore(true)}
-                        className={`px-4 py-2 rounded-full font-medium transition-all ${
-                          showBefore 
-                            ? "bg-salon-rose-500 text-white" 
-                            : "text-salon-neutral-700 hover:bg-salon-neutral-100"
-                        }`}
+                        onClick={() => setShowBefore(!showBefore)}
+                        className="px-4 py-2 bg-salon-rose-500 text-white rounded-full font-medium"
                       >
-                        Before
-                      </button>
-                      <button
-                        onClick={() => setShowBefore(false)}
-                        className={`px-4 py-2 rounded-full font-medium transition-all ${
-                          !showBefore 
-                            ? "bg-salon-rose-500 text-white" 
-                            : "text-salon-neutral-700 hover:bg-salon-neutral-100"
-                        }`}
-                      >
-                        After
+                        {showBefore ? "Show After" : "Show Before"}
                       </button>
                     </div>
                   </div>
                 </div>
 
-                {/* Details */}
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-salon-charcoal mb-2">
-                    {selectedImage.title}
-                  </h3>
-                  <p className="text-salon-neutral-600 mb-4">{selectedImage.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-salon-neutral-500">
-                      Styled by {selectedImage.stylist}
-                    </span>
-                    <a
-                      href="/book"
-                      className="px-6 py-2 bg-salon-rose-500 text-white rounded-full font-medium hover:bg-salon-rose-600 transition-colors"
-                    >
-                      Book This Look
-                    </a>
+                {/* Details Footer */}
+                <div className="p-6 bg-white">
+                  <p className="text-salon-neutral-600 mb-6">{selectedImage.description}</p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <span className="px-3 py-1 bg-salon-rose-50 text-salon-rose-600 rounded-full text-sm font-medium">
+                        {selectedImage.category}
+                      </span>
+                      <span className="text-sm text-salon-neutral-500">
+                        Transformation by {selectedImage.stylist}
+                      </span>
+                    </div>
+                    
+                    <div className="flex gap-3">
+                      <a
+                        href={`/stylists/${selectedImage.stylist.toLowerCase().replace(" ", "-")}`}
+                        className="px-6 py-2 border-2 border-salon-rose-500 text-salon-rose-500 rounded-full font-medium hover:bg-salon-rose-50 transition-colors"
+                      >
+                        View Stylist
+                      </a>
+                      <a
+                        href="/book"
+                        className="px-6 py-2 bg-salon-rose-500 text-white rounded-full font-medium hover:bg-salon-rose-600 transition-colors"
+                      >
+                        Book This Look
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
-          </div>
-        )}
+          )}
+        </AnimatePresence>
 
         {/* CTA Section */}
         <motion.div
