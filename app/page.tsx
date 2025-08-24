@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRight, Star, Sparkles, Heart } from "lucide-react";
 import { salonInfo, stylists, services } from "@/lib/data";
 import BrandsSection from "@/components/BrandsSection";
+import Testimonials from "@/components/Testimonials";
 import { FadeInUp, FadeInScale, StaggerChildren, StaggerItem } from "@/components/ScrollAnimations";
 
 export default function Home() {
@@ -147,6 +148,8 @@ export default function Home() {
       </section>
 
       <BrandsSection />
+      
+      <Testimonials />
 
       <section className="py-20 bg-salon-rose-500 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

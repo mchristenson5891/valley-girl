@@ -2,32 +2,18 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Menu, X, Scissors, ShoppingBag, Instagram } from "lucide-react";
+import { Menu, X, Scissors, Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
   const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-      
-      // Update active section based on scroll position
-      const sections = ['home', 'stylists', 'services', 'brands'];
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -142,20 +128,33 @@ export default function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-white border-t"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden bg-white border-t shadow-lg"
           >
-            <div className="px-4 py-6 space-y-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block text-lg text-salon-neutral-700 hover:text-salon-rose-500 transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
+            <div className="px-4 py-6 space-y-1">
+              {navLinks.map((link, index) => {
+                const isActive = pathname === link.href;
+                return (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05, duration: 0.3 }}
+                  >
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`block px-4 py-3 text-lg rounded-lg transition-all duration-300 ${
+                        isActive
+                          ? 'bg-salon-rose-50 text-salon-rose-500 font-medium'
+                          : 'text-salon-neutral-700 hover:bg-salon-neutral-50 hover:text-salon-rose-500'
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                );
+              })}
               <div className="flex items-center space-x-4 pt-4 border-t">
                 <Link
                   href="https://instagram.com/valleygirlsalon"

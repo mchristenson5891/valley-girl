@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Instagram, Send } from "lucide-react";
 import { salonInfo } from "@/lib/data";
 import Link from "next/link";
+import GoogleMap from "@/components/GoogleMap";
 
 export default function ContactPage() {
   return (
@@ -244,6 +245,17 @@ export default function ContactPage() {
             </div>
           </motion.div>
         </div>
+        
+        {/* Google Map Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="mt-16"
+        >
+          <h2 className="text-2xl font-bold text-salon-charcoal mb-6 text-center">Find Us</h2>
+          <GoogleMap />
+        </motion.div>
       </div>
     </div>
   );
