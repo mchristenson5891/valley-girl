@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRight, Star, Sparkles, Heart } from "lucide-react";
 import { salonInfo, stylists, services } from "@/lib/data";
 import BrandsSection from "@/components/BrandsSection";
+import { FadeInUp, FadeInScale, StaggerChildren, StaggerItem } from "@/components/ScrollAnimations";
 
 export default function Home() {
   return (
@@ -20,9 +21,9 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-          <div
+          <div className="animate-fade-in-up"
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-scale-in">
               <span className="text-white drop-shadow-2xl">
                 Valley Girl
               </span>
@@ -30,15 +31,15 @@ export default function Home() {
               <span className="text-3xl md:text-5xl text-salon-rose-200 drop-shadow-2xl font-dancing">Salon</span>
             </h1>
             
-            <p className="text-2xl md:text-3xl text-salon-rose-100 mb-4 font-dancing drop-shadow-xl">
+            <p className="text-2xl md:text-3xl text-salon-rose-100 mb-4 font-dancing drop-shadow-xl animate-fade-in animation-delay-200">
               {salonInfo.tagline}
             </p>
             
-            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto drop-shadow">
+            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto drop-shadow animate-fade-in animation-delay-300">
               {salonInfo.heroText}
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-400">
               <Link
                 href="/book"
                 className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-salon-rose-500 rounded-full hover:shadow-xl hover:bg-salon-rose-600 transform hover:scale-105 transition-all duration-200"
@@ -58,7 +59,7 @@ export default function Home() {
           </div>
           
           <div
-            className="mt-16 flex justify-center space-x-1"
+            className="mt-16 flex justify-center space-x-1 animate-pulse-slow"
           >
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="h-6 w-6 text-yellow-400 fill-current" />
@@ -75,18 +76,14 @@ export default function Home() {
 
       <section id="stylists" className="py-20 bg-salon-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            className="text-center mb-12"
-          >
+          <FadeInUp className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Talented Stylists</h2>
             <p className="text-lg text-gray-600">Meet the artists behind your transformation</p>
-          </div>
+          </FadeInUp>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <StaggerChildren className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6" staggerDelay={0.1}>
             {stylists.map((stylist) => (
-              <div
-                key={stylist.id}
-              >
+              <StaggerItem key={stylist.id}>
                 <Link
                   href={`/stylists/${stylist.id}`}
                   className="group block"
@@ -105,27 +102,23 @@ export default function Home() {
                     {stylist.name}
                   </h3>
                 </Link>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerChildren>
         </div>
       </section>
 
       <section id="services" className="py-20 bg-salon-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            className="text-center mb-12"
-          >
+          <FadeInUp className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
             <p className="text-lg text-gray-600">Professional hair care tailored to you</p>
-          </div>
+          </FadeInUp>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <StaggerChildren className="grid md:grid-cols-2 lg:grid-cols-4 gap-8" staggerDelay={0.15}>
             {services.map((category) => (
-              <div
-                key={category.category}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"
-              >
+              <StaggerItem key={category.category}>
+                <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow h-full">
                 <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
                   <Heart className="h-5 w-5 text-salon-rose-500 mr-2" />
                   {category.category}
@@ -146,9 +139,10 @@ export default function Home() {
                     View all →
                   </Link>
                 )}
-              </div>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerChildren>
         </div>
       </section>
 
@@ -156,8 +150,7 @@ export default function Home() {
 
       <section className="py-20 bg-salon-rose-500 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div
-          >
+          <FadeInScale>
             <h2 className="text-4xl font-bold mb-6">Ready for Your Transformation?</h2>
             <p className="text-xl mb-8 text-salon-rose-100">
               Book your appointment today and let us bring out your inner Valley Girl
@@ -169,7 +162,7 @@ export default function Home() {
               Book Now
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
-          </div>
+          </FadeInScale>
         </div>
       </section>
     </div>

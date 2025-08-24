@@ -67,9 +67,9 @@ export default function ShopPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
         <div className="relative h-full flex items-center justify-center text-center px-4">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
           >
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
               Shop Valley Girl
@@ -91,8 +91,9 @@ export default function ShopPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Featured Products */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="mb-16"
         >
           <h2 className="text-3xl font-bold text-center mb-8">
@@ -167,9 +168,10 @@ export default function ShopPage() {
           {searchedBrands.map((brand, index) => (
             <motion.div
               key={brand.id}
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
+              transition={{ duration: 0.6, delay: index * 0.08, ease: [0.4, 0, 0.2, 1] }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer border border-salon-neutral-100"
             >
               <div className="aspect-square bg-gradient-to-br from-white to-salon-neutral-50 flex items-center justify-center p-6 group-hover:from-salon-rose-50 group-hover:to-salon-rose-100 transition-colors">
@@ -224,9 +226,9 @@ export default function ShopPage() {
         )}
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           className="mt-16 bg-gradient-to-r from-salon-rose-500 to-salon-rose-400 rounded-3xl p-8 md:p-12 text-white text-center shadow-xl"
         >
           <h2 className="text-3xl font-bold mb-4">Shop In-Store or Online</h2>

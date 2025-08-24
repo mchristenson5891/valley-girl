@@ -11,9 +11,9 @@ export default function StylistsPage() {
     <div className="min-h-screen bg-gradient-to-br from-salon-cream to-white py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <h1 className="text-5xl font-bold mb-4">
@@ -30,9 +30,10 @@ export default function StylistsPage() {
           {stylists.map((stylist, index) => (
             <motion.div
               key={stylist.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.8, delay: index * 0.15, ease: [0.4, 0, 0.2, 1] }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-xl transition-all duration-300 group"
             >
               <Link href={`/stylists/${stylist.id}`}>

@@ -16,6 +16,134 @@ body {
   color: var(--foreground);
 }
 
+/* Enhanced smooth animations */
+@layer base {
+  /* Smooth color transitions for all elements */
+  * {
+    @apply transition-colors duration-300;
+  }
+  
+  /* Enhanced button hover effects */
+  button, a {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-500 ease-out hover:shadow-2xl hover:-translate-y-1;
+  }
+  
+  /* Image hover zoom */
+  .image-hover-zoom {
+    @apply transition-transform duration-700 ease-out hover:scale-110;
+  }
+  
+  /* Text hover effects */
+  .text-hover-gradient {
+    @apply transition-all duration-300;
+    background-size: 200% auto;
+  }
+  
+  .text-hover-gradient:hover {
+    background-position: right center;
+  }
+  
+  /* Fade in animations */
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Stagger animations for lists */
+  .stagger-animation > * {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  .stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+  .stagger-animation > *:nth-child(6) { animation-delay: 0.6s; }
+  .stagger-animation > *:nth-child(7) { animation-delay: 0.7s; }
+  .stagger-animation > *:nth-child(8) { animation-delay: 0.8s; }
+  .stagger-animation > *:nth-child(9) { animation-delay: 0.9s; }
+  
+  /* Smooth hover transitions */
+  .hover-lift {
+    @apply transition-all duration-500 ease-out;
+  }
+  
+  .hover-lift:hover {
+    @apply -translate-y-2 shadow-2xl;
+  }
+  
+  /* Gradient animations */
+  .gradient-animation {
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+  }
+  
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out;
+  }
+  
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes fadeInUp {
+    from { 
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes scaleIn {
+    from { 
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to { 
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
 .font-dancing {
   font-family: var(--font-dancing), cursive;
 }

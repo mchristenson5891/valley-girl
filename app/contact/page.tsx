@@ -10,9 +10,9 @@ export default function ContactPage() {
     <div className="min-h-screen bg-gradient-to-br from-salon-cream to-white py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <h1 className="text-5xl font-bold mb-4">
@@ -27,9 +27,9 @@ export default function ContactPage() {
 
         <div className="grid lg:grid-cols-2 gap-12">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
             className="space-y-8"
           >
             <div className="bg-white rounded-2xl shadow-xl p-8 border border-salon-neutral-100">
@@ -151,9 +151,9 @@ export default function ContactPage() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
           >
             <div className="bg-white rounded-2xl shadow-xl p-8 border border-salon-neutral-100">
               <h2 className="text-2xl font-bold text-salon-charcoal mb-6">Send Us a Message</h2>

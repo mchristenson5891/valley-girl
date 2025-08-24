@@ -17,9 +17,9 @@ export default function ServicesPage() {
     <div className="min-h-screen bg-gradient-to-br from-salon-cream to-white py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <h1 className="text-5xl font-bold mb-4">
@@ -36,9 +36,10 @@ export default function ServicesPage() {
           {services.map((category, index) => (
             <motion.div
               key={category.category}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.8, delay: index * 0.15, ease: "easeOut" }}
+              whileHover={{ y: -5, transition: { duration: 0.3 } }}
               className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all border border-salon-neutral-100"
             >
               <div className="bg-gradient-to-r from-salon-rose-500 to-salon-rose-400 p-6 text-white">
@@ -70,9 +71,9 @@ export default function ServicesPage() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: [0.4, 0, 0.2, 1] }}
           className="bg-gradient-to-r from-salon-rose-500 to-salon-rose-400 rounded-3xl p-8 md:p-12 text-white text-center shadow-xl"
         >
           <h2 className="text-3xl font-bold mb-4">Ready to Book?</h2>
@@ -90,7 +91,7 @@ export default function ServicesPage() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
           className="mt-12 text-center text-salon-neutral-600"
         >
           <p className="text-sm">

@@ -64,9 +64,9 @@ export default function BookingPage() {
       </div>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1, ease: "easeOut" }}
           className="text-center mb-12"
         >
           <h1 className="text-5xl font-bold mb-4">
@@ -113,9 +113,9 @@ export default function BookingPage() {
 
         <motion.div
           key={step}
-          initial={{ opacity: 0, x: 20 }}
+          initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }}
           className="bg-white rounded-2xl shadow-xl p-8 border border-salon-neutral-100"
         >
           {step === 1 && (
@@ -132,7 +132,7 @@ export default function BookingPage() {
                       {category.items.map((service) => (
                         <label
                           key={service.name}
-                          className={`flex items-center justify-between p-4 rounded-lg border-2 cursor-pointer transition-all ${
+                          className={`flex items-center justify-between p-4 rounded-lg border-2 cursor-pointer transition-all duration-500 ease-out transform hover:scale-[1.02] ${
                             selectedService === service.name
                               ? "border-salon-rose-500 bg-salon-rose-50 shadow-md"
                               : "border-salon-neutral-200 hover:border-salon-rose-300 hover:shadow-sm"
@@ -167,7 +167,7 @@ export default function BookingPage() {
               </h2>
               <div className="grid md:grid-cols-2 gap-4">
                 <label
-                  className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
+                  className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-500 ease-out transform hover:scale-[1.02] ${
                     selectedStylist === "any"
                       ? "border-salon-rose-500 bg-salon-rose-50 shadow-md"
                       : "border-salon-neutral-200 hover:border-salon-rose-300 hover:shadow-sm"
@@ -196,7 +196,7 @@ export default function BookingPage() {
                 {stylists.map((stylist) => (
                   <label
                     key={stylist.id}
-                    className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
+                    className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-500 ease-out transform hover:scale-[1.02] ${
                       selectedStylist === stylist.id
                         ? "border-salon-rose-500 bg-salon-rose-50 shadow-md"
                         : "border-salon-neutral-200 hover:border-salon-rose-300 hover:shadow-sm"
@@ -262,7 +262,7 @@ export default function BookingPage() {
                       <button
                         key={time}
                         onClick={() => setSelectedTime(time)}
-                        className={`px-3 py-2 rounded-lg border-2 transition-all ${
+                        className={`px-3 py-2 rounded-lg border-2 transition-all duration-300 ease-out transform hover:scale-105 ${
                           selectedTime === time
                             ? "border-salon-rose-500 bg-salon-rose-50 text-salon-rose-500 shadow-sm"
                             : "border-salon-neutral-200 hover:border-salon-rose-300 hover:shadow-sm"
