@@ -33,16 +33,15 @@ export default function StylistsPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.15, ease: [0.4, 0, 0.2, 1] }}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-xl transition-all duration-300 group"
+              className="bg-white rounded-2xl shadow-lg overflow-hidden group"
             >
-              <Link href={`/stylists/${stylist.id}`}>
+              <Link href={`/stylists/${stylist.id}`} className="block transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
                 <div className="relative h-80 bg-gradient-to-br from-salon-rose-100 to-salon-rose-100 overflow-hidden">
                   <Image
                     src={stylist.image}
                     alt={stylist.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6">
