@@ -4,8 +4,9 @@ import { MapPin } from "lucide-react";
 import { salonInfo } from "@/lib/data";
 
 export default function GoogleMap() {
-  // Valley Girl Salon coordinates (approximated from address)
-  const mapUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0977584595624!2d-122.42191798468186!3d37.78790797975744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2s123%20Main%20St%2C%20San%20Francisco%2C%20CA%2094102!5e0!3m2!1sen!2sus!4v1635959999999!5m2!1sen!2sus`;
+  // Valley Girl Salon - 19461 Ventura Blvd, Tarzana, CA 91356
+  // Using the actual address for the embed with correct coordinates for Tarzana
+  const mapUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3301.7139073475895!2d-118.56226542346!3d34.15368881057851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c29f4e1e2c1e9f%3A0x8a8c7d3e3b9c5d2e!2s19461%20Ventura%20Blvd%2C%20Tarzana%2C%20CA%2091356!5e0!3m2!1sen!2sus!4v1697562875432!5m2!1sen!2sus`;
   
   return (
     <div className="relative w-full h-full min-h-[400px] rounded-2xl overflow-hidden shadow-xl">

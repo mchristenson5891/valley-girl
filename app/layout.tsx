@@ -18,8 +18,8 @@ const dancing = Dancing_Script({
 
 export const metadata: Metadata = {
   title: "Valley Girl Salon - Come as you are, leave as a Valley Girl",
-  description: "Premier hair salon in San Francisco offering cutting-edge styling, coloring, and treatments. Book your transformation today!",
-  keywords: "hair salon, San Francisco, hair color, haircut, balayage, highlights, hair treatment, K18, Olaplex, Davines, Valley Girl Salon",
+  description: "Premier hair salon in Tarzana, CA offering cutting-edge styling, coloring, and treatments. Book your transformation today!",
+  keywords: "hair salon, Tarzana, Los Angeles, hair color, haircut, balayage, highlights, hair treatment, K18, Olaplex, Davines, Valley Girl Salon",
   authors: [{ name: "Valley Girl Salon" }],
   creator: "Valley Girl Salon",
   publisher: "Valley Girl Salon",
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://valleygirlsalon.com"),
   openGraph: {
-    title: "Valley Girl Salon - Premier Hair Salon in San Francisco",
-    description: "Come as you are, leave as a Valley Girl. Expert hair styling, coloring, and treatments in the heart of San Francisco.",
+    title: "Valley Girl Salon - Premier Hair Salon in Tarzana, CA",
+    description: "Come as you are, leave as a Valley Girl. Expert hair styling, coloring, and treatments in the heart of Tarzana.",
     url: "https://valleygirlsalon.com",
     siteName: "Valley Girl Salon",
     images: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Valley Girl Salon - San Francisco's Premier Hair Salon",
+        alt: "Valley Girl Salon - Tarzana's Premier Hair Salon",
       },
     ],
     locale: "en_US",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Valley Girl Salon - Come as you are, leave as a Valley Girl",
-    description: "Premier hair salon in San Francisco offering cutting-edge styling, coloring, and treatments.",
+    description: "Premier hair salon in Tarzana, CA offering cutting-edge styling, coloring, and treatments.",
     images: ["/og-image.jpg"],
   },
   robots: {
