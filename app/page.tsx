@@ -4,6 +4,7 @@ import { ArrowRight, Star, Sparkles, Heart } from "lucide-react";
 import { salonInfo, stylists, services } from "@/lib/data";
 import BrandsSection from "@/components/BrandsSection";
 import Testimonials from "@/components/Testimonials";
+import InstagramFeed from "@/components/InstagramFeed";
 import { FadeInUp, FadeInScale, StaggerChildren, StaggerItem } from "@/components/ScrollAnimations";
 
 export default function Home() {
@@ -148,6 +149,8 @@ export default function Home() {
       </section>
 
       <BrandsSection />
+      
+      <InstagramFeed />
       
       <Testimonials />
 
