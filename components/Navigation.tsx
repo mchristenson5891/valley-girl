@@ -25,7 +25,6 @@ export default function Navigation() {
     { href: "/stylists", label: "Stylists" },
     { href: "/services", label: "Services" },
     { href: "/gallery", label: "Gallery" },
-    { href: "/blog", label: "Blog" },
     { href: "/shop", label: "Shop" },
     { href: "/contact", label: "Contact" }
   ];
