@@ -21,7 +21,7 @@ export default function ContactPage() {
             </span>
           </h1>
           <p className="text-xl text-salon-neutral-600 max-w-2xl mx-auto">
-            We'd love to hear from you! Visit us, call, or send us a message
+            We&apos;d love to hear from you! Visit us, call, or send us a message
           </p>
         </motion.div>
 

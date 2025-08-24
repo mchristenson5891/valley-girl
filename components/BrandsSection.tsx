@@ -77,7 +77,7 @@ export default function BrandsSection() {
             Premium Brands We Trust
           </h2>
           <p className="text-lg text-salon-neutral-600 max-w-3xl mx-auto">
-            We exclusively carry professional-grade products from the industry's most innovative and trusted brands
+            We exclusively carry professional-grade products from the industry&apos;s most innovative and trusted brands
           </p>
         </div>
         

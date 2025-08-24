@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Instagram, Award, Scissors } from "lucide-react";
+import { Instagram, Award } from "lucide-react";
 import { stylists } from "@/lib/data";
 
 export default function StylistsPage() {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Instagram, Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Instagram, Phone, Mail, MapPin } from "lucide-react";
 import { salonInfo } from "@/lib/data";
 
 export default function Footer() {

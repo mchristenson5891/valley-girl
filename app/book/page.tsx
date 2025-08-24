@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Calendar, Clock, User, Scissors, ArrowRight, CheckCircle, Phone, Mail } from "lucide-react";
+import { Calendar, User, Scissors, ArrowRight, CheckCircle, Phone, Mail } from "lucide-react";
 import { stylists, services } from "@/lib/data";
 import Image from "next/image";
 import Cal, { getCalApi } from "@calcom/embed-react";
@@ -188,7 +188,7 @@ export default function BookingPage() {
                     <div>
                       <h3 className="font-semibold text-salon-charcoal">No Preference</h3>
                       <p className="text-sm text-salon-neutral-600 mt-1">
-                        We'll match you with an available stylist
+                        We&apos;ll match you with an available stylist
                       </p>
                     </div>
                   </div>
@@ -439,7 +439,7 @@ export default function BookingPage() {
             <div className="mt-6 p-4 bg-salon-gold/10 border border-salon-gold/30 rounded-lg">
               <p className="text-sm text-salon-charcoal">
                 <strong>Note:</strong> To complete setup, create a Cal.com account and replace
-                "valleygirl/appointment" with your actual Cal.com link. You can also integrate with
+                &quot;valleygirl/appointment&quot; with your actual Cal.com link. You can also integrate with
                 other booking systems like Calendly, Acuity, or Square Appointments.
               </p>
             </div>

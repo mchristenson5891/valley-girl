@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { ShoppingBag, Filter, Search, ExternalLink, Package, Sparkles, Heart } from "lucide-react";
 import { brands } from "@/lib/data";
 import Link from "next/link";
-import Image from "next/image";
 
 // Actual products from Valley Girl Square store
 const featuredProducts = [

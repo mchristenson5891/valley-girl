@@ -83,7 +83,7 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {stylists.map((stylist, index) => (
+            {stylists.map((stylist) => (
               <div
                 key={stylist.id}
               >
@@ -121,7 +121,7 @@ export default function Home() {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((category, index) => (
+            {services.map((category) => (
               <div
                 key={category.category}
                 className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow"

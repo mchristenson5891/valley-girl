@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Instagram, Award, ArrowLeft, Calendar, Phone, Mail } from "lucide-react";
-import { stylists, salonInfo } from "@/lib/data";
+import { Instagram, Award, ArrowLeft, Calendar } from "lucide-react";
+import { stylists } from "@/lib/data";
 
 export default function StylistProfilePage() {
   const params = useParams();
@@ -114,7 +113,7 @@ export default function StylistProfilePage() {
             <div className="bg-salon-cream rounded-2xl p-6">
               <h3 className="text-xl font-semibold text-salon-charcoal mb-3">Gallery</h3>
               <p className="text-salon-neutral-600">
-                Check out {stylist.name}'s work on Instagram for inspiration and ideas for your next visit!
+                Check out {stylist.name}&apos;s work on Instagram for inspiration and ideas for your next visit!
               </p>
               <a
                 href={`https://instagram.com/${stylist.instagram.replace("@", "")}`}
