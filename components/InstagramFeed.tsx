@@ -5,7 +5,8 @@ import Image from "next/image";
 import { Instagram, Heart, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
-// Mock Instagram posts data (in production, this would come from Instagram API)
+// Sample posts - these are placeholder images
+// To get real Instagram posts, you'd need to integrate with Instagram's API
 const mockInstagramPosts = [
   {
     id: "1",
@@ -75,7 +76,7 @@ export default function InstagramFeed() {
               Follow Our Work
             </h2>
             <p className="text-lg text-salon-neutral-600 mb-2">
-              See our latest transformations on Instagram
+              Visit our Instagram for real transformations
             </p>
             <a
               href="https://instagram.com/valleygirlsalon"
@@ -134,7 +135,7 @@ export default function InstagramFeed() {
             href="https://instagram.com/valleygirlsalon"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-medium hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+            className="inline-flex items-center justify-center px-6 py-3 bg-salon-rose-500 text-white rounded-full font-medium hover:bg-salon-rose-600 hover:shadow-xl transform hover:scale-105 transition-all duration-200"
           >
             <Instagram className="h-5 w-5 mr-2" />
             View More on Instagram

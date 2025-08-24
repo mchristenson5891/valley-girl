@@ -266,7 +266,7 @@ export default function BlogPage() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mt-20 bg-gradient-to-r from-salon-rose-500 to-salon-rose-400 rounded-3xl p-8 md:p-12 text-white text-center"
+          className="mt-20 bg-salon-rose-500 rounded-3xl p-8 md:p-12 text-white text-center"
         >
           <h2 className="text-3xl font-bold mb-4">Stay in the Loop</h2>
           <p className="text-lg mb-6 text-salon-rose-100 max-w-2xl mx-auto">
