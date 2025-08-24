@@ -36,16 +36,15 @@ export default function ServicesPage() {
           {services.map((category, index) => (
             <motion.div
               key={category.category}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.15, ease: "easeOut" }}
-              whileHover={{ y: -5, transition: { duration: 0.3 } }}
-              className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all border border-salon-neutral-100"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-salon-neutral-100 group"
             >
-              <div className="bg-gradient-to-r from-salon-rose-500 to-salon-rose-400 p-6 text-white">
+              <div className="bg-gradient-to-r from-salon-rose-500 to-salon-rose-400 p-6 text-white group-hover:from-salon-rose-600 group-hover:to-salon-rose-500 transition-all duration-300">
                 <div className="flex items-center justify-between">
                   <h2 className="text-2xl font-bold">{category.category}</h2>
-                  <div className="text-white/80">
+                  <div className="text-white/80 group-hover:scale-110 transition-transform duration-300">
                     {categoryIcons[category.category]}
                   </div>
                 </div>
@@ -71,9 +70,9 @@ export default function ServicesPage() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: [0.4, 0, 0.2, 1] }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="bg-gradient-to-r from-salon-rose-500 to-salon-rose-400 rounded-3xl p-8 md:p-12 text-white text-center shadow-xl"
         >
           <h2 className="text-3xl font-bold mb-4">Ready to Book?</h2>
@@ -91,7 +90,7 @@ export default function ServicesPage() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-12 text-center text-salon-neutral-600"
         >
           <p className="text-sm">

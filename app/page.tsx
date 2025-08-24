@@ -25,26 +25,26 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
           <div className="animate-fade-in-up"
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-scale-in">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 animate-scale-in">
               <span className="text-white drop-shadow-2xl">
                 Valley Girl
               </span>
               <br />
-              <span className="text-3xl md:text-5xl text-salon-rose-200 drop-shadow-2xl font-dancing">Salon</span>
+              <span className="text-2xl sm:text-3xl md:text-5xl text-salon-rose-200 drop-shadow-2xl font-dancing">Salon</span>
             </h1>
             
-            <p className="text-2xl md:text-3xl text-salon-rose-100 mb-4 font-dancing drop-shadow-xl animate-fade-in animation-delay-200">
+            <p className="text-xl sm:text-2xl md:text-3xl text-salon-rose-100 mb-4 font-dancing drop-shadow-xl animate-fade-in animation-delay-200">
               {salonInfo.tagline}
             </p>
             
-            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto drop-shadow animate-fade-in animation-delay-300">
+            <p className="text-base sm:text-lg text-white/90 mb-8 max-w-2xl mx-auto px-4 drop-shadow animate-fade-in animation-delay-300">
               {salonInfo.heroText}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-400">
               <Link
                 href="/book"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-salon-rose-500 rounded-full hover:shadow-xl hover:bg-salon-rose-600 transform hover:scale-105 transition-all duration-200"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium text-white bg-salon-rose-500 rounded-full hover:shadow-xl hover:bg-salon-rose-600 transform hover:scale-105 transition-all duration-200"
               >
                 Book Appointment
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -52,7 +52,7 @@ export default function Home() {
               
               <Link
                 href="/stylists"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-salon-teal-500 border-2 border-white rounded-full shadow-md hover:shadow-xl hover:bg-salon-teal-600 transform hover:scale-105 transition-all duration-200"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium text-white bg-salon-teal-500 border-2 border-white rounded-full shadow-md hover:shadow-xl hover:bg-salon-teal-600 transform hover:scale-105 transition-all duration-200"
               >
                 Meet Our Stylists
                 <Sparkles className="ml-2 h-5 w-5" />
@@ -117,7 +117,7 @@ export default function Home() {
             <p className="text-lg text-gray-600">Professional hair care tailored to you</p>
           </FadeInUp>
           
-          <StaggerChildren className="grid md:grid-cols-2 lg:grid-cols-4 gap-8" staggerDelay={0.15}>
+          <StaggerChildren className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8" staggerDelay={0.15}>
             {services.map((category) => (
               <StaggerItem key={category.category}>
                 <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow h-full">

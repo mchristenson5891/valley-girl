@@ -12,9 +12,10 @@ export default function StylistsPage() {
       {/* Hero Section with Team Photo */}
       <div className="relative h-[60vh] min-h-[500px] overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-contain md:bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('https://9ae5edccc14b5e9d0342.cdn6.editmysite.com/uploads/b/9ae5edccc14b5e9d034238da5184f3edaee7f4d9e3dbb7ce99ae9baf17b724de/IMG_3926_1755890723.jpg?width=2400&optimize=medium')`
+            backgroundImage: `url('https://9ae5edccc14b5e9d0342.cdn6.editmysite.com/uploads/b/9ae5edccc14b5e9d034238da5184f3edaee7f4d9e3dbb7ce99ae9baf17b724de/IMG_3926_1755890723.jpg?width=2400&optimize=medium')`,
+            backgroundColor: '#1a1a1a'
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
@@ -53,7 +54,7 @@ export default function StylistsPage() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {stylists.map((stylist, index) => (
             <motion.div
               key={stylist.id}
@@ -88,13 +89,13 @@ export default function StylistsPage() {
                       {stylist.specialties.slice(0, 3).map((specialty) => (
                         <span
                           key={specialty}
-                          className="px-3 py-1 bg-salon-rose-50 text-salon-rose-500 rounded-full text-sm font-medium"
+                          className="px-3 py-1 bg-salon-rose-50 text-salon-rose-500 border border-salon-rose-200 rounded-full text-sm font-medium"
                         >
                           {specialty}
                         </span>
                       ))}
                       {stylist.specialties.length > 3 && (
-                        <span className="px-3 py-1 bg-salon-neutral-100 text-salon-neutral-600 rounded-full text-sm">
+                        <span className="px-3 py-1 bg-salon-neutral-100 text-salon-neutral-600 border border-salon-neutral-200 rounded-full text-sm">
                           +{stylist.specialties.length - 3} more
                         </span>
                       )}
